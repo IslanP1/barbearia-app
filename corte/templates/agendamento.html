@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento</title>
+</head>
+<body>
+    <h1>Agendar</h1>
+    
+    <form method="post">
+        {% csrf_token %}
+        <label for="horario">Horário:</label>
+
+
+        <select name="horario" id="horario">
+            {% for h in horarios %}
+                <option value="{{ h.id }}">{{ h.horario }}</option>
+            {% endfor %}
+        </select>
+        <br>
+        <br>
+        
+        <label for="data">Data:</label>
+        <input type="date" name="data" id="data">
+        <br>
+        
+        <label for="modelo_corte">Modelo de Corte:</label>
+        <textarea name="modelo_corte" id="modelo_corte"></textarea>
+        <br>
+        
+        <button type="submit">Agendar</button>
+    </form>
+</body>
+</html>

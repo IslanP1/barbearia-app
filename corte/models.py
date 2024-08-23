@@ -9,6 +9,7 @@ class Horario(models.Model):
         return self.horario
 
 class Agendamento(models.Model):
+    #tratar
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
     data = models.DateField()
