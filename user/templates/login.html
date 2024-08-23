@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+
+<body>
+    <div class="">
+        <div class="">
+            <h1>Boas Vindas!</h1>
+        </div>
+        <form action="{% url 'logar' %}" class="" method="post"> {% csrf_token %}
+            <div class="">
+                <span>Username:</span>
+                <input type="text" name="username" placeholder="Ex.: João123" autocomplete="off">
+            </div>
+            <div class="">
+                <span>Senha:</span>
+                <input type="password" name="password" autocomplete="off">
+            </div>
+            <div class="">
+                <input type="submit" value="Entrar">
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
