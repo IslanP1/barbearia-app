@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="pt-br">
+
 <head>
     <meta charset="UTF-8">
     <title>Agendamento</title>
 </head>
+
 <body>
     <h1>Agendar</h1>
-    
+
     <form method="post">
         {% csrf_token %}
         <label for="horario">Horário:</label>
@@ -14,21 +16,39 @@
 
         <select name="horario" id="horario">
             {% for h in horarios %}
-                <option value="{{ h.id }}">{{ h.horario }}</option>
+            <option value="{{ h.id }}">{{ h.horario }}</option>
             {% endfor %}
         </select>
         <br>
         <br>
-        
+
         <label for="data">Data:</label>
         <input type="date" name="data" id="data">
         <br>
-        
+
         <label for="modelo_corte">Modelo de Corte:</label>
         <textarea name="modelo_corte" id="modelo_corte"></textarea>
         <br>
-        
+
         <button type="submit">Agendar</button>
     </form>
+
+    <h1>Minha Agenda</h1>
+    {% for agenda in agendamentos %}
+    <form method="post" action="{% url 'deletar' agenda.id %}">
+        {% csrf_token %}
+        <p>---------</p>
+        <p>Horário: {{ agenda.horario }}</p>
+        <p>Data: {{ agenda.data }}</p>
+        <p>Modelo de Corte: {{ agenda.modelo_corte }}</p>
+        <button type="submit">Cancelar</button>
+        <p>---------</p>
+    </form>
+    {% empty %}
+    <p>Você não tem agendamentos.</p>
+    {% endfor %}
+
+
 </body>
+
 </html>

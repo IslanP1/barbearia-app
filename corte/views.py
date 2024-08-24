@@ -1,8 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Horario, Agendamento
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseBadRequest
 
 @login_required
 def agendar(request):
@@ -30,4 +30,17 @@ def agendar(request):
         
     else:
         horarios = Horario.objects.all()
-        return render(request, 'agendamento.html', {'horarios': horarios})
+        agendamentos = Agendamento.objects.filter(user=request.user)
+        return render(request, 'agendamento.html', {'horarios': horarios, 'agendamentos': agendamentos})
+
+@login_required
+def deletar(request, id):
+    try:
+        agendamento = Agendamento.objects.filter(user=request.user).get(id=id)
+    except Agendamento.DoesNotExist:
+        #tratar para não apagar os cortes de outros
+        pass
+    if request.method == 'POST':
+        agendamento.delete()
+        return redirect('/corte/agendar/')
+
