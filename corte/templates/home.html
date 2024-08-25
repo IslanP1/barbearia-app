@@ -1,11 +1,48 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'corte/home/css/style.css' %}">
     <title>Document</title>
 </head>
+
 <body>
-    <h1>Sou a home</h1>
+    <nav class="navbar">
+        <a href="#">Inicio</a>
+        <a href="#">Agendamento</a>
+        <a href="#">Login</a>
+        <a href="#">Logout</a>
+    </nav>
+    <div class="container">
+        <div class="content">
+            <div>
+                <h1>BarberShop</h1>
+                <p>
+                    <span style="margin-right: 25px;"></span>Seja bem-vindo à BarberShop, um espaço dedicado à arte de bem cuidar do visual masculino! Na
+                    BarberShop, não apenas cortamos cabelos e aparando barbas – transformamos o momento do seu corte em
+                    uma verdadeira experiência de relaxamento e estilo.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Nosso ambiente é cuidadosamente pensado para oferecer um espaço acolhedor e moderno, onde você pode
+                    se sentir à vontade para relaxar enquanto nossos barbeiros profissionais cuidam de cada detalhe do
+                    seu visual. Utilizamos técnicas tradicionais e modernas, sempre atualizadas com as últimas
+                    tendências de corte e estilo, garantindo que você saia daqui satisfeito e confiante.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Além dos serviços de corte de cabelo e barba, oferecemos um atendimento personalizado, com produtos
+                    de alta qualidade, selecionados especialmente para atender às necessidades de cada cliente. Nossa
+                    missão é proporcionar uma experiência única, combinando técnica, cuidado e atenção em cada
+                    atendimento.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Venha conhecer a BarberShop e descubra como é ser atendido por quem entende de estilo e valorização
+                    do visual masculino. Estamos esperando por você!
+                </p>
+            </div>
+            <div class="img"></div>
+        </div>
+
+    </div>
 </body>
+
 </html>
