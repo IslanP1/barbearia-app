@@ -1,8 +1,11 @@
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
-from django.contrib import messages
 from .models import Horario, Agendamento
-from django.http import HttpResponse, HttpResponseBadRequest
+from django.http import HttpResponse
+
+def home(request):
+    if request.method == "GET":
+        return render(request, 'home.html')
 
 @login_required
 def agendar(request):
@@ -24,9 +27,8 @@ def agendar(request):
             modelo_corte=modelo_corte
         )
         agendamento.save()
-        
-        messages.success(request, "Agendamento realizado com sucesso.")
-        return redirect('/')
+    
+        return redirect('/corte/agendar/')
         
     else:
         horarios = Horario.objects.all()
