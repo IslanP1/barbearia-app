@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Usuário</th>
+                <th>Horário</th>
+                <th>Data</th>
+                <th>Modelo de Corte</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for agendamento in agendamentos %}
+            <tr>
+                <td>{{ agendamento.user }}</td>
+                <td>{{ agendamento.horario }}</td>
+                <td>{{ agendamento.data }}</td>
+                <td>{{ agendamento.modelo_corte }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

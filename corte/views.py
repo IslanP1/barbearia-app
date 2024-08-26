@@ -56,4 +56,11 @@ def deletar(request, id):
         agendamento.delete()
         messages.success(request, 'Agendamento cancelado com sucesso')
         return redirect('/agendar/')
-
+    
+def agendageral(request):
+    if request.method == "GET":
+        if request.user.is_authenticated and request.user.is_staff:
+            agendamentos = Agendamento.objects.all()
+            return render(request, 'agendageral.html', {"agendamentos": agendamentos})
+        messages.error(request, 'Entre como administrador')
+        return redirect('/')

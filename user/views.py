@@ -15,7 +15,6 @@ def cadastrar(request):
         email = request.POST.get('email')
         senha = request.POST.get('password')
         confirmar_senha = request.POST.get('confirm_password')
-       
         if len(username.strip()) == 0 or len(email.strip()) == 0 or len(senha.strip()) == 0 or len(confirmar_senha.strip()) == 0:
             messages.warning(request, 'Preencha os campos!')
             return redirect('/auth/cadastrar/')

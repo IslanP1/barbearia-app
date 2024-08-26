@@ -16,6 +16,9 @@
         <a href="{% url 'cadastrar' %}">Cadastro</a>
         <a href="{% url 'logar' %}">Login</a>
         <a href="{% url 'sair' %}">Logout</a>
+        {% if user.is_authenticated and user.is_staff %}
+            <a href="{% url 'agendageral' %}">Agenda Geral</a>
+        {% endif %}
     </nav>
     <div class="container">
         {% if messages %}
