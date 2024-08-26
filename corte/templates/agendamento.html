@@ -1,12 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="pt-br">
 
 <head>
     <meta charset="UTF-8">
     <title>Agendamento</title>
+    <link rel="stylesheet" href="{% static 'corte/agendamento/css/style.css' %}">
 </head>
 
 <body>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
     <h1>Agendar</h1>
 
     <form method="post">

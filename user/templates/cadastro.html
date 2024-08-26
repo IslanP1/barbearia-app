@@ -6,15 +6,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cadastro</title>
+    <link rel="stylesheet" href="{% static 'user/cadastro/css/style.css' %}">
 </head>
 
 <body>
     <div class="">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
         <div class="">
             <p>Registre-se</p>
             <span></span>
         </div>
-        <form action="{% url 'cadastro' %}" class="" method="post"> {% csrf_token %}
+        <form action="{% url 'cadastrar' %}" class="" method="post"> {% csrf_token %}
             <div class="">
                 <span>Username:</span>
                 <input type="text" name="username" placeholder="Ex.: João123" autocomplete="off">
@@ -34,6 +43,7 @@
             <div class="">
                 <input type="submit" value="Criar conta">
             </div>
+            <a href="{% url 'logar' %}">Já tenho uma conta</a>
         </form>
         <div class="">
             <a href=""></a>

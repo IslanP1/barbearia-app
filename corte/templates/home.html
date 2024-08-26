@@ -11,12 +11,20 @@
 
 <body>
     <nav class="navbar">
-        <a href="#">Inicio</a>
-        <a href="#">Agendamento</a>
-        <a href="#">Login</a>
-        <a href="#">Logout</a>
+        <a href="{% url 'home' %}">Inicio</a>
+        <a href="{% url 'agendar' %}">Agendamento</a>
+        <a href="{% url 'cadastrar' %}">Cadastro</a>
+        <a href="{% url 'logar' %}">Login</a>
+        <a href="{% url 'sair' %}">Logout</a>
     </nav>
     <div class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
         <div class="content">
             <div>
                 <h1>BarberShop</h1>
