@@ -1,41 +1,33 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "./base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{% static 'user/login/css/style.css' %}">
-</head>
+{% block template %}
 
-<body>
-    {% if messages %}
-        <ul class="messages">
-            {% for message in messages %}
-                <li class="{{ message.tags }}">{{ message }}</li>
-            {% endfor %}
-        </ul>
-    {% endif %}
-    <div class="">
-        <div class="">
-            <h1>Boas Vindas!</h1>
-        </div>
-        <form action="{% url 'logar' %}" class="" method="post"> {% csrf_token %}
-            <div class="">
-                <span>Username:</span>
-                <input type="text" name="username" placeholder="Ex.: João123" autocomplete="off">
-            </div>
-            <div class="">
-                <span>Senha:</span>
-                <input type="password" name="password" autocomplete="off">
-            </div>
-            <div class="">
-                <input type="submit" value="Entrar">
-            </div>
-            <a href="{% url 'cadastrar' %}">Não tenho conta</a>
-        </form>
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="{{ message.tags }}">{{ message }}</li>
+    {% endfor %}
+</ul>
+{% endif %}
+<div >
+    <div>
+        <h1>Login</h1>
     </div>
-</body>
+    <form action="{% url 'logar' %}" class="" method="post"> {% csrf_token %}
+        <div >
+            <span>Username:</span><br/>
+            <input class="inputpassword" type="text" name="username" placeholder="Insira o username" autocomplete="off">
+        </div>
+        <div>
+            <span>Senha:</span><br/>
+            <input class="inputpassword" type="password" name="password" autocomplete="off">
+        </div>
+        <div class="">
+            <input class="btn" type="submit" value="Entrar">
+        </div>
+        <a href="{% url 'cadastrar' %}">Não tenho conta</a>
+    </form>
+</div>
 
-</html>
+
+{% endblock %}

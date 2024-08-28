@@ -1,15 +1,6 @@
-{% load static %}
-<!DOCTYPE html>
-<html lang="pt-br">
+{% extends "./base.html" %}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
-    <link rel="stylesheet" href="{% static 'user/cadastro/css/style.css' %}">
-</head>
-
-<body>
+{% block template %}
     <div class="">
         {% if messages %}
             <ul class="messages">
@@ -19,29 +10,28 @@
             </ul>
         {% endif %}
 
-        <div class="">
-            <p>Registre-se</p>
-            <span></span>
+        <div>
+            <h1>Login</h1>
         </div>
         <form action="{% url 'cadastrar' %}" class="" method="post"> {% csrf_token %}
-            <div class="">
-                <span>Username:</span>
-                <input type="text" name="username" placeholder="Ex.: João123" autocomplete="off">
+            <div>
+                <span>Username:</span><br/>
+                <input class="inputpassword" type="text" name="username" placeholder="Insira o username" autocomplete="off">
             </div>
             <div class="">
-                <span>E-mail</span>
-                <input type="email" name="email" placeholder="joao@gmail.com" autocomplete="off">
+                <span>E-mail</span><br/>
+                <input class="inputpassword" type="email" name="email" placeholder="Insira o email" autocomplete="off">
             </div>
             <div class="">
-                <span>Senha:</span>
-                <input type="password" name="password" autocomplete="off">
+                <span>Senha:</span><br/>
+                <input class="inputpassword" type="password" name="password" autocomplete="off">
             </div>
             <div class="">
-                <span>Confirme sua senha:</span>
-                <input type="password" name="confirm_password" autocomplete="off">
+                <span>Confirme sua senha:</span><br/>
+                <input class="inputpassword" type="password" name="confirm_password" autocomplete="off">
             </div>
             <div class="">
-                <input type="submit" value="Criar conta">
+                <input class="btn" type="submit" value="Criar conta">
             </div>
             <a href="{% url 'logar' %}">Já tenho uma conta</a>
         </form>
@@ -49,6 +39,5 @@
             <a href=""></a>
         </div>
     </div>
-</body>
 
-</html>
+{% endblock %}
