@@ -1,0 +1,148 @@
+* {
+    padding: 0px;
+    margin: 0px;
+    box-sizing: 0px;
+    font-family: sans-serif;
+    color: white
+  }
+  
+  body {
+    background: #101012;
+  }
+  
+  .navbar {
+    background: #181820;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+  }
+  
+  .navbar>a {
+    color: white;
+    text-decoration: none;
+  }
+  
+  .navbar>a:hover {
+    color: #eb5b00;
+  }
+  
+  .container {
+    padding: 16px;
+    padding: 40px;
+  }
+  
+  .content {
+    padding: 30px;
+    background: #181820;
+    display: flex;
+    flex-wrap: wrap; 
+    gap: 16px;
+    border-radius: 8px;
+    overflow:hidden;
+    align-items: center; 
+  }
+  
+  .content h1 {
+    color: #eb5b00;
+    margin-bottom: 16px;
+  }
+  
+  .content>div {
+    flex: 1; 
+    min-width: 300px; 
+  }
+  
+  span {
+    font-size: 1.3rem;
+  }
+  .img-class {
+    flex: 1; 
+  }
+  
+  img {
+    width: 500px;
+    height: 500px;
+  }
+  
+  .central-login-div {
+    padding: 40px;
+    padding-left: 100px;
+  }
+  
+  
+  .inputpassword{
+  
+      display: block;
+      width: 60%;
+      height: 50%;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      color: black;
+     
+      background-clip: padding-box;
+      border: 1px solid #ced4da;
+      border-radius: .25rem;
+      transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      
+      margin-bottom: 1rem;
+      
+   
+  }
+  
+  .btn {
+      background-color: #EB5B00;
+      color: white;
+      display: inline-block;
+      font-weight: 400;
+      text-align: center;
+      white-space: nowrap;
+      vertical-align: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+      user-select: none;
+      border: 1px solid transparent;
+      padding: .375rem .75rem;
+      font-size: 1rem;
+      line-height: 1.5;
+      border-radius: .25rem;
+      transition: color .15s ease-in-out, background-color .15s ease-in-out, border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+      margin-bottom: 5px;
+      cursor: pointer;
+    }
+  
+  
+      
+  /* estilo do messages */
+  
+  .messages {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .messages li {
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .messages .success {
+    background-color: #dff0d8;
+    color: #3c763d;
+  }
+  
+  .messages .error {
+    background-color: #f2dede;
+    color: #a94442;
+  }
+  
+  .messages .warning {
+    background-color: #fcf8e3;
+    color: #8a6d3b;
+  }
+  
+  .messages .info {
+    background-color: #d9edf7;
+    color: #31708f;
+  }
