@@ -3,27 +3,124 @@
 
 .messages {
     list-style-type: none;
-    padding: 0;
+    padding-inline: 16px;
+    padding-top: 16px;
   }
-  .messages li {
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 5px;
-  }
-  .messages .success {
-    background-color: #dff0d8;
-    color: #3c763d;
-  }
-  .messages .error {
-    background-color: #f2dede;
-    color: #a94442;
-  }
-  .messages .warning {
-    background-color: #fcf8e3;
-    color: #8a6d3b;
-  }
-  .messages .info {
-    background-color: #d9edf7;
-    color: #31708f;
-  }
-  
+.messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.messages .success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+.messages .error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+.messages .warning {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+.messages .info {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+/*navbar e body */
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: 0px;
+  font-family: sans-serif;
+  color: white
+}
+
+body {
+  background: #101012;
+}
+
+.navbar {
+  background: #181820;
+  padding: 16px;
+  display: flex;
+  gap: 16px;
+}
+
+.navbar>a {
+  color: white;
+  text-decoration: none;
+}
+
+.navbar>a:hover {
+  color: #eb5b00;
+}  
+
+/*main*/
+
+main {
+  padding: 16px;
+}
+
+main > div {
+  padding: 16px;
+  background: #181820;
+}
+
+main > div > h1 {
+  color: #eb5b00;
+  margin-bottom: 16px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.corte {
+  border-bottom: 1px solid #a0a0a0;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.corte:first-child {
+  padding-top: 0px;
+}
+/*inputs*/
+textarea {
+  cursor: pointer;
+  margin-top: 4px;
+  display: block;
+  resize: none;
+  border-radius: 4px;
+  border: none;
+  color: #181820;
+  width: clamp(100px, 100% , 500px);
+  padding: 4px 8px;
+}
+input {
+  cursor: pointer;
+  border-radius: 4px;
+  border: none;
+  color: #181820;
+  padding: 4px 8px;
+}
+
+select {
+  color: #181820;
+  padding: 4px 8px;
+  border-radius: 4px;
+}
+
+select > option {
+  color: #181820;
+}
+
+.btn {
+  cursor: pointer;
+  background: #eb5b00;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: none;
+}
