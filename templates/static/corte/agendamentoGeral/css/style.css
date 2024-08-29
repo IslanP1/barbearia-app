@@ -25,7 +25,7 @@ body {
 
 .navbar>a:hover {
   color: #eb5b00;
-} 
+}
 
 /*main*/
 
@@ -33,12 +33,12 @@ main {
   padding: 16px;
 }
 
-main > div {
+main>div {
   padding: 16px;
   background: #181820;
 }
 
-main > div > h1 {
+main>div>h1 {
   color: #eb5b00;
   margin-bottom: 16px;
 }
@@ -46,18 +46,18 @@ main > div > h1 {
 /*table*/
 
 table {
+  width: 100%;
   border-collapse: collapse;
   margin: 0px auto;
-  min-width: 800px;
   background-color: #101012;
   border: 1px solid #303030;
-  
+
 }
-td, th {
+
+td,
+th {
   border: none;
-  border-bottom: #a0a0a0;
   padding: 4px 8px;
-  width: auto
 }
 
 td {
@@ -68,6 +68,12 @@ tr {
   border-bottom: 1px solid #303030;
 }
 
+th:nth-child(4),
+td:nth-child(4) {
+  display: none;
+  /* Ajuste essa porcentagem conforme necessário */
+}
+
 
 
 table th {
@@ -76,4 +82,35 @@ table th {
   text-align: left;
   color: white;
 
+}
+
+
+@media (max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  table {
+    min-width: 50px;
+    margin: 0px;
+
+  }
+
+  td, th {
+    width: auto;
+  }
+
+  th:nth-child(4),
+  td:nth-child(4) {
+    display: table-cell;
+    /* Ajuste essa porcentagem conforme necessário */
+  }
+
+  th:nth-child(2),
+  td:nth-child(2),
+  th:nth-child(3),
+  td:nth-child(3) {
+    display: none;
+    /* Ajuste essa porcentagem conforme necessário */
+  }
 }

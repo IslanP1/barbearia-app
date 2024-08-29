@@ -27,6 +27,7 @@
                         <th>Usuário</th>
                         <th>Horário</th>
                         <th>Data</th>
+                        <th>Data</th>
                         <th>Modelo de Corte</th>
                     </tr>
                 </thead>
@@ -36,6 +37,11 @@
                         <td>{{ agendamento.user }}</td>
                         <td>{{ agendamento.horario }}</td>
                         <td>{{ agendamento.data }}</td>
+                        <td>
+                            {{ agendamento.horario }} -
+                            <br>
+                            {{ agendamento.data }}
+                        </td>
                         <td>{{ agendamento.modelo_corte }}</td>
                     </tr>
                     {% endfor %}
