@@ -99,3 +99,10 @@ body {
   background-color: #d9edf7;
   color: #31708f;
 }
+
+@media (max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+}
