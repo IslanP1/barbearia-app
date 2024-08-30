@@ -39,7 +39,10 @@ def agendar(request):
             return redirect('/agendar/')
         
         else:
-            horarios = Horario.objects.all()
+            horarios = Horario.objects.annotate(
+                hora_inicial = Cast(Substr('horario', 1, 2), IntegerField())
+            ).order_by('hora_inicial')
+            
             agendamentos_ocupados = Agendamento.objects.all()
             agendamentos = Agendamento.objects.filter(user=request.user)
             
