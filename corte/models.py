@@ -10,8 +10,8 @@ class Horario(models.Model):
 
 class Agendamento(models.Model):
     #tratar
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
-    horario = models.ForeignKey(Horario, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.PROTECT)
+    horario = models.ForeignKey(Horario, on_delete=models.PROTECT)
     data = models.DateField()
     modelo_corte = models.TextField(null=True, blank=True)
     

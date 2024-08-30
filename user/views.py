@@ -59,7 +59,7 @@ def logar(request):
             return redirect('/')
         else:
             messages.error(request, 'Usuário ou senha incorretos')
-            return('/auth/logar/')
+            return redirect('/auth/logar/')
         
     return render(request, 'login.html')
 

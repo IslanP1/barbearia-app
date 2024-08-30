@@ -13,8 +13,10 @@
     <nav class="navbar">
         <a href="{% url 'home' %}">Inicio</a>
         <a href="{% url 'agendar' %}">Agendamento</a>
-        <a href="{% url 'cadastrar' %}">Cadastro</a>
-        <a href="{% url 'logar' %}">Login</a>
+        {% if not user.is_authenticated %}
+            <a href="{% url 'cadastrar' %}">Cadastro</a>
+            <a href="{% url 'logar' %}">Login</a>
+        {% endif %}
         <a href="{% url 'sair' %}">Logout</a>
         {% if user.is_authenticated and user.is_staff %}
             <a href="{% url 'agendageral' %}">Agenda Geral</a>

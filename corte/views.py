@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from .models import Horario, Agendamento
+from django.db.models import IntegerField, Value
+from django.db.models.functions import Cast, Substr, Length, Concat, Replace
+
 
 def home(request):
     if request.method == "GET":
@@ -37,8 +40,10 @@ def agendar(request):
         
         else:
             horarios = Horario.objects.all()
+            agendamentos_ocupados = Agendamento.objects.all()
             agendamentos = Agendamento.objects.filter(user=request.user)
-            return render(request, 'agendamento.html', {'horarios': horarios, 'agendamentos': agendamentos})
+            
+            return render(request, 'agendamento.html', {'horarios': horarios, 'agendamentos': agendamentos, 'agendamentos_ocupados' : agendamentos_ocupados})
         
     else:
         messages.warning(request, 'Faça autenticação para agendar ou ver agendamentos!')
