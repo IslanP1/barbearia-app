@@ -32,7 +32,7 @@
 * {
   padding: 0px;
   margin: 0px;
-  box-sizing: 0px;
+  box-sizing: border-box;
   font-family: sans-serif;
   color: white
 }
@@ -64,15 +64,22 @@ main {
 }
 
 main > div {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
   padding: 16px;
   background: #181820;
 }
 
-main > div > h1 {
+main  h1 {
   color: #eb5b00;
   margin-bottom: 16px;
 }
 
+#item1 {width: auto;}
+#item2 {width: auto;}
+
+/*form*/
 form {
   display: flex;
   flex-direction: column;
@@ -84,9 +91,12 @@ form {
   padding-bottom: 16px;
 }
 
-.corte:first-child {
-  padding-top: 0px;
+.data-e-hora {
+  display: flex;
+  gap: 16px;
 }
+
+
 /*inputs*/
 textarea {
   cursor: pointer;
@@ -96,7 +106,8 @@ textarea {
   border-radius: 4px;
   border: none;
   color: #181820;
-  width: clamp(100px, 100% , 500px);
+  width: 100%;
+  min-height: 70px;
   padding: 4px 8px;
 }
 input {
@@ -123,4 +134,56 @@ select > option {
   padding: 4px 8px;
   border-radius: 4px;
   border: none;
+}
+
+/*Table */
+
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 0px auto;
+  background-color: #101012;
+  border: 1px solid #303030;
+
+}
+
+td,
+th {
+  border: none;
+  padding: 4px 8px;
+  width: min-content;
+}
+
+td {
+  color: #a9a9ac;
+}
+
+tr {
+  border-bottom: 1px solid #303030;
+}
+
+
+table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  color: white;
+
+}
+
+@media (max-width: 1000px) {
+  main > div {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  table {
+    margin: 0px;
+  }
 }

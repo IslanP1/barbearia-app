@@ -13,12 +13,12 @@
         <a href="{% url 'home' %}">Inicio</a>
         <a href="{% url 'agendar' %}">Agendamento</a>
         {% if not user.is_authenticated %}
-            <a href="{% url 'cadastrar' %}">Cadastro</a>
-            <a href="{% url 'logar' %}">Login</a>
+        <a href="{% url 'cadastrar' %}">Cadastro</a>
+        <a href="{% url 'logar' %}">Login</a>
         {% endif %}
         <a href="{% url 'sair' %}">Logout</a>
         {% if user.is_authenticated and user.is_staff %}
-            <a href="{% url 'agendageral' %}">Agenda Geral</a>
+        <a href="{% url 'agendageral' %}">Agenda Geral</a>
         {% endif %}
         <a href="{% url 'admin:index' %}">Admin</a>
     </nav>
@@ -33,76 +33,83 @@
 
     <main>
         <div>
-            {% if agendamentos_ocupados %}
-                <div>
-                    <h1>Horários e datas ocupados</h1>
-                    <table border="1">
-                        <thead>
-                            <tr>                   
-                                <th>Horário</th>
-                                <th>Data</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {% for agendamento in agendamentos_ocupados %}
-                            <tr>
-                                <td>{{ agendamento.horario }}</td>
-                                <td>{{ agendamento.data }}</td>
-                            </tr>
-                            {% endfor %}
-                        </tbody>
-                    </table>
-                </div>
-            {% endif %}
-            <h1>Agendar</h1>
-            <form method="post">
-                {% csrf_token %}
-                <div>
-                    <label for="horario">Horário:</label>
-
-
-                    <select name="horario" id="horario">
-                        {% for h in horarios %}
-                        <option value="{{ h.id }}">{{ h.horario }}</option>
-                        {% endfor %}
-                    </select>
-                </div>
-
-                <div>
-                    <label for="data">Data:</label>
-                    <input type="date" name="data" id="data" required>
-                </div>
-
-
-                <div>
-                    <label for="modelo_corte">Modelo de Corte:</label>
-                    <textarea name="modelo_corte" id="modelo_corte" placeholder="Tipo de corte" required></textarea>
-                </div>
-
-
-                <div>
-                    <button type="submit" class="btn">Agendar</button>
-                </div>
-            </form>
-
-            <br>
-            <h1>Minha Agenda</h1>
-            <div class="cortes">
-                {% for agenda in agendamentos %}
-                <form class="corte" method="post" action="{% url 'deletar' agenda.id %}">
+            <div id="item1">
+                <h1>Agendar</h1>
+                <form method="post">
                     {% csrf_token %}
-                    <p>Horário: {{ agenda.horario }}</p>
-                    <p>Data: {{ agenda.data }}</p>
-                    <p>Modelo de Corte: {{ agenda.modelo_corte }}</p>
                     <div>
-                        <button type="submit" class="btn">Cancelar</button>
+                        <label for="horario">Horário:</label>
+
+
+                        <select name="horario" id="horario">
+                            {% for h in horarios %}
+                            <option value="{{ h.id }}">{{ h.horario }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="data">Data:</label>
+                        <input type="date" name="data" id="data" required>
+                    </div>
+
+
+                    <div>
+                        <label for="modelo_corte">Modelo de Corte:</label>
+                        <textarea name="modelo_corte" id="modelo_corte" placeholder="Tipo de corte" required></textarea>
+                    </div>
+
+
+                    <div>
+                        <button type="submit" class="btn">Agendar</button>
                     </div>
                 </form>
-                {% empty %}
-            </div>
-            <p>Você não tem agendamentos.</p>
-            {% endfor %}
 
+                <br>
+                <h1>Minha Agenda</h1>
+                <div class="cortes">
+                    {% for agenda in agendamentos %}
+                    <form class="corte" method="post" action="{% url 'deletar' agenda.id %}">
+                        {% csrf_token %}
+                        <div class="data-e-hora">
+                            <p>Horário: {{ agenda.horario }}</p>
+                            <p>Data: {{ agenda.data }}</p>
+                        </div>
+                        <p>Modelo de Corte: {{ agenda.modelo_corte }}</p>
+                        <div>
+                            <button type="submit" class="btn">Cancelar</button>
+                        </div>
+                    </form>
+                    {% empty %}
+                    <p>Você não tem agendamentos.</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+
+
+            {% if agendamentos_ocupados %}
+            <div id="item2">
+                <h1>Horários e datas ocupados</h1>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for agendamento in agendamentos_ocupados %}
+                        <tr>
+                            <td>{{ agendamento.horario }}</td>
+                            <td>{{ agendamento.data }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
         </div>
     </main>
 
