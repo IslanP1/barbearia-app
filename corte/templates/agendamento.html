@@ -18,8 +18,9 @@
         {% endif %}
         <a href="{% url 'sair' %}">Logout</a>
         {% if user.is_authenticated and user.is_staff %}
-        <a href="{% url 'agendageral' %}">Agenda Geral</a>
+            <a href="{% url 'agendageral' %}">Agenda Geral</a>
         {% endif %}
+        <a href="{% url 'admin:index' %}">Admin</a>
     </nav>
 
     {% if messages %}

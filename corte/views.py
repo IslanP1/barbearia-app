@@ -49,6 +49,10 @@ def agendar(request):
             
             agendamentos = Agendamento.objects.filter(user=request.user)
             
+            agendamentos = agendamentos.annotate(
+                hora_inicial=Cast(Substr('horario__horario', 1, 2), IntegerField())
+            ).order_by('data', 'hora_inicial')
+            
             return render(request, 'agendamento.html', {'horarios': horarios, 'agendamentos': agendamentos, 'agendamentos_ocupados' : agendamentos_ocupados})
         
     else:
@@ -72,6 +76,11 @@ def agendageral(request):
     if request.method == "GET":
         if request.user.is_authenticated and request.user.is_staff:
             agendamentos = Agendamento.objects.all()
+            
+            agendamentos = agendamentos.annotate(
+                hora_inicial=Cast(Substr('horario__horario', 1, 2), IntegerField())
+            ).order_by('data', 'hora_inicial')
+            
             return render(request, 'agendageral.html', {"agendamentos": agendamentos})
         messages.error(request, 'Entre como administrador')
         return redirect('/')

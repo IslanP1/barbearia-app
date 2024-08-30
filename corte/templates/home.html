@@ -21,6 +21,7 @@
         {% if user.is_authenticated and user.is_staff %}
             <a href="{% url 'agendageral' %}">Agenda Geral</a>
         {% endif %}
+        <a href="{% url 'admin:index' %}">Admin</a>
     </nav>
     <div class="container">
         {% if messages %}
