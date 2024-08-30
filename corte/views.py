@@ -43,7 +43,10 @@ def agendar(request):
                 hora_inicial = Cast(Substr('horario', 1, 2), IntegerField())
             ).order_by('hora_inicial')
             
-            agendamentos_ocupados = Agendamento.objects.all()
+            agendamentos_ocupados = Agendamento.objects.annotate(
+                hora_inicial=Cast(Substr('horario__horario', 1, 2), IntegerField())
+            ).order_by('data', 'hora_inicial')
+            
             agendamentos = Agendamento.objects.filter(user=request.user)
             
             return render(request, 'agendamento.html', {'horarios': horarios, 'agendamentos': agendamentos, 'agendamentos_ocupados' : agendamentos_ocupados})
