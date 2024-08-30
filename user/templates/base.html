@@ -11,13 +11,55 @@
 
 <body>
     <nav class="navbar">
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'agendar' %}">Agendamento</a>
-        <a href="{% url 'cadastrar' %}">Cadastro</a>
-        <a href="{% url 'logar' %}">Login</a>
-        <a href="{% url 'sair' %}">Logout</a>
-        {% if user.is_authenticated and user.is_staff %}
-            <a href="{% url 'agendageral' %}">Agenda Geral</a>
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'corte/icons/home.svg' %}" alt="" srcset="">
+                Inicio
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'agendar' %}">
+                <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
+                Agendamento
+            </a>
+        </div>
+        
+        {% if user.is_staff %}
+            <div>
+                <a href="{% url 'agendageral' %}">
+                    <img src="{% static 'corte/icons/listAdmin.svg' %}" alt="" srcset="">
+                    Agenda Geral
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}">
+                    <img src="{% static 'corte/icons/admin.svg' %}" alt="" srcset="">
+                    Admin
+                </a>
+            </div>
+        {% endif %}
+        <div>
+            <a href="{% url 'sair' %}">
+                <img src="{% static 'corte/icons/logout.svg' %}" alt="" srcset="">
+                Logout
+            </a>
+        </div>
+        {%endif%}
+
+        {% if not user.is_authenticated %}
+            <div>
+                <a href="{% url 'cadastrar' %}">
+                    <img src="{% static 'corte/icons/userRegistration.svg' %}" alt="" srcset="">
+                    Cadastro
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logar' %}">
+                    <img src="{% static 'corte/icons/login.svg' %}" alt="" srcset="">
+                    Login
+                </a>
+            </div>
         {% endif %}
     </nav>
     <div class="container">
@@ -35,7 +77,7 @@
               {% endblock %}  
             </div>
             <div class="img-class">
-                <img src="{% static 'imgs/barber3.png' %}" alt="">
+                <img class="img" src="{% static 'imgs/barber3.png' %}" alt="">
             </div>
         </div>
 

@@ -45,17 +45,36 @@ body {
   background: #181820;
   padding: 16px;
   display: flex;
-  gap: 16px;
+  gap: 20px;
 }
 
-.navbar>a {
+.navbar a {
   color: white;
   text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
-.navbar>a:hover {
-  color: #eb5b00;
-}  
+.navbar>div::after {
+  transition: 0.3s 0s;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: lightgray;
+  margin-top: 2px;
+}
+
+.navbar>div:hover::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  
+  background-color: #eb5b00;
+} 
 
 /*main*/
 

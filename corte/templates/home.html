@@ -6,22 +6,61 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{% static 'corte/home/css/style.css' %}">
-    <title>Document</title>
+    <title>Inicio</title>
 </head>
 
 <body>
     <nav class="navbar">
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'agendar' %}">Agendamento</a>
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'corte/icons/home.svg' %}" alt="" srcset="">
+                Inicio
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'agendar' %}">
+                <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
+                Agendamento
+            </a>
+        </div>
+        
+        {% if user.is_staff %}
+            <div>
+                <a href="{% url 'agendageral' %}">
+                    <img src="{% static 'corte/icons/listAdmin.svg' %}" alt="" srcset="">
+                    Agenda Geral
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}">
+                    <img src="{% static 'corte/icons/admin.svg' %}" alt="" srcset="">
+                    Admin
+                </a>
+            </div>
+        {% endif %}
+        <div>
+            <a href="{% url 'sair' %}">
+                <img src="{% static 'corte/icons/logout.svg' %}" alt="" srcset="">
+                Logout
+            </a>
+        </div>
+        {%endif%}
+
         {% if not user.is_authenticated %}
-            <a href="{% url 'cadastrar' %}">Cadastro</a>
-            <a href="{% url 'logar' %}">Login</a>
+            <div>
+                <a href="{% url 'cadastrar' %}">
+                    <img src="{% static 'corte/icons/userRegistration.svg' %}" alt="" srcset="">
+                    Cadastro
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logar' %}">
+                    <img src="{% static 'corte/icons/login.svg' %}" alt="" srcset="">
+                    Login
+                </a>
+            </div>
         {% endif %}
-        <a href="{% url 'sair' %}">Logout</a>
-        {% if user.is_authenticated and user.is_staff %}
-            <a href="{% url 'agendageral' %}">Agenda Geral</a>
-        {% endif %}
-        <a href="{% url 'admin:index' %}">Admin</a>
     </nav>
     <div class="container">
         {% if messages %}
