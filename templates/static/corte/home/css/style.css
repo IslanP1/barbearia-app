@@ -65,12 +65,22 @@ body {
 .content > div {
   max-width: 50%;
 }
-
+ 
 .img {
-  width: 50%;
+  justify-content: center;
+  width: 40%;
   min-height: 100px;
-  background: red;
+  
 }
+/* Classe da imagem da home, qualquer coisa só tirar a div da home e volta ao normal */
+.img-class {
+  width: 100%;
+  display: flex;
+  
+  justify-content: center;
+}
+
+
 
 /* estilo do messages */
 
@@ -100,6 +110,18 @@ body {
   color: #31708f;
 }
 
+/* Função para concertar a imagem */
+@media (max-width: 920px) {
+  .content {
+    flex-direction: column;
+  }
+  .content > div {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+}
+/**/
 @media (max-width: 650px) {
   .navbar {
     flex-direction: column;
@@ -112,6 +134,14 @@ body {
   .content > div {
     max-width: 100%;
     width: 100%;
+  }
+  .img{
+    width: 300px;
+    height: 300px;
+  }
+  .img-i {
+    width: 300px;
+    height: 300px;
   }
 
 }
