@@ -6,4 +6,5 @@ urlpatterns = [
     path('agendar/', views.agendar, name="agendar"),
     path('agendageral/', views.agendageral, name="agendageral"),
     path('deletar/<int:id>', views.deletar, name="deletar"),
+    path('feedback/', views.feedback, name="feedback"),
 ]

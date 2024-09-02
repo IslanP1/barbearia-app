@@ -84,3 +84,7 @@ def agendageral(request):
             return render(request, 'agendageral.html', {"agendamentos": agendamentos})
         messages.error(request, 'Entre como administrador')
         return redirect('/')
+    
+def feedback(request):
+    if request.method == "GET":
+        return render(request, 'feedback.html')

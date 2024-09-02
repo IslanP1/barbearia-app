@@ -16,6 +16,13 @@
                 Inicio
             </a>
         </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                feedback
+            </a>
+        </div>
+        
         {% if user.is_authenticated %}
         <div>
             <a href="{% url 'agendar' %}">
@@ -23,7 +30,7 @@
                 Agendamento
             </a>
         </div>
-        
+       
         {% if user.is_staff %}
             <div>
                 <a href="{% url 'agendageral' %}">

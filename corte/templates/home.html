@@ -17,6 +17,12 @@
                 Inicio
             </a>
         </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                feedback
+            </a>
+        </div>
         {% if user.is_authenticated %}
         <div>
             <a href="{% url 'agendar' %}">
@@ -46,7 +52,7 @@
             </a>
         </div>
         {%endif%}
-
+        
         {% if not user.is_authenticated %}
             <div>
                 <a href="{% url 'cadastrar' %}">
@@ -61,6 +67,7 @@
                 </a>
             </div>
         {% endif %}
+        
     </nav>
     <div class="container">
         {% if messages %}

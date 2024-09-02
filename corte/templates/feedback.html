@@ -5,8 +5,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{% static 'user/login/css/style.css' %}"> 
-    <title>Autenticação</title>
+    <link rel="stylesheet" href="{% static 'corte/feedback/css/style.css' %}">
+    <title>Feedback</title>
 </head>
 
 <body>
@@ -17,6 +17,12 @@
                 Inicio
             </a>
         </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                feedback
+            </a>
+        </div>
         {% if user.is_authenticated %}
         <div>
             <a href="{% url 'agendar' %}">
@@ -24,12 +30,7 @@
                 Agendamento
             </a>
         </div>
-        <div>
-            <a href="{% url 'feedback' %}">
-                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
-                feedback
-            </a>
-        </div>
+        
         {% if user.is_staff %}
             <div>
                 <a href="{% url 'agendageral' %}">
@@ -51,13 +52,7 @@
             </a>
         </div>
         {%endif%}
-        <div>
-            <a href="{% url 'feedback' %}">
-                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
-                feedback
-            </a>
-        </div>
-        
+       
         {% if not user.is_authenticated %}
             <div>
                 <a href="{% url 'cadastrar' %}">
@@ -71,7 +66,6 @@
                     Login
                 </a>
             </div>
- 
         {% endif %}
         
     </nav>
@@ -84,17 +78,22 @@
             </ul>
         {% endif %}
         <div class="content">
-            <div class="central-login-div">
-              {% block template %}
-
-              {% endblock %}  
+            <div class="coments">
+                <h1>Feedback</h1>
+                <div id="disqus_thread"></div>
             </div>
-            <div class="img-class">
-                <img class="img" src="{% static 'imgs/barber.png' %}" alt="">
-            </div>
+            
+            
         </div>
 
     </div>
 </body>
-
+<script>
+    (function() { 
+    var d = document, s = d.createElement('script');
+    s.src = 'https://barbershop-2.disqus.com/embed.js';
+    s.setAttribute('data-timestamp', +new Date());
+    (d.head || d.body).appendChild(s);
+    })();
+</script>
 </html>
