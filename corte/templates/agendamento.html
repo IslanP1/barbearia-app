@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <title>Agendamento</title>
     <link rel="stylesheet" href="{% static 'corte/agendamento/css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <div>
             <a href="{% url 'feedback' %}">
                 <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
-                feedback
+                Feedback
             </a>
         </div>
         
@@ -29,8 +30,7 @@
                 <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
                 Agendamento
             </a>
-        </div>
-       
+        </div>     
         {% if user.is_staff %}
             <div>
                 <a href="{% url 'agendageral' %}">
@@ -85,8 +85,6 @@
                     {% csrf_token %}
                     <div>
                         <label for="horario">Horário:</label>
-
-
                         <select name="horario" id="horario">
                             {% for h in horarios %}
                             <option value="{{ h.id }}">{{ h.horario }}</option>
@@ -99,12 +97,10 @@
                         <input type="date" name="data" id="data" required>
                     </div>
 
-
                     <div>
                         <label for="modelo_corte">Modelo de Corte:</label>
                         <textarea name="modelo_corte" id="modelo_corte" placeholder="Tipo de corte" required></textarea>
                     </div>
-
 
                     <div>
                         <button type="submit" class="btn">Agendar</button>
@@ -132,8 +128,6 @@
                 </div>
 
             </div>
-
-
 
             {% if agendamentos_ocupados %}
             <div id="item2">
