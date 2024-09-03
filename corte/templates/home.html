@@ -1,0 +1,111 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'corte/home/css/style.css' %}">
+    <title>Inicio</title>
+</head>
+
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'corte/icons/home.svg' %}" alt="" srcset="">
+                Inicio
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                feedback
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'agendar' %}">
+                <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
+                Agendamento
+            </a>
+        </div>
+        
+        {% if user.is_staff %}
+            <div>
+                <a href="{% url 'agendageral' %}">
+                    <img src="{% static 'corte/icons/listAdmin.svg' %}" alt="" srcset="">
+                    Agenda Geral
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}">
+                    <img src="{% static 'corte/icons/admin.svg' %}" alt="" srcset="">
+                    Admin
+                </a>
+            </div>
+        {% endif %}
+        <div>
+            <a href="{% url 'sair' %}">
+                <img src="{% static 'corte/icons/logout.svg' %}" alt="" srcset="">
+                Logout
+            </a>
+        </div>
+        {%endif%}
+        
+        {% if not user.is_authenticated %}
+            <div>
+                <a href="{% url 'cadastrar' %}">
+                    <img src="{% static 'corte/icons/userRegistration.svg' %}" alt="" srcset="">
+                    Cadastro
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logar' %}">
+                    <img src="{% static 'corte/icons/login.svg' %}" alt="" srcset="">
+                    Login
+                </a>
+            </div>
+        {% endif %}
+        
+    </nav>
+    <div class="container">
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="{{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+        <div class="content">
+            <div>
+                <h1>BarberShop</h1>
+                <p>
+                    <span style="margin-right: 25px;"></span>Seja bem-vindo à BarberShop, um espaço dedicado à arte de bem cuidar do visual masculino! Na
+                    BarberShop, não apenas cortamos cabelos e aparando barbas – transformamos o momento do seu corte em
+                    uma verdadeira experiência de relaxamento e estilo.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Nosso ambiente é cuidadosamente pensado para oferecer um espaço acolhedor e moderno, onde você pode
+                    se sentir à vontade para relaxar enquanto nossos barbeiros profissionais cuidam de cada detalhe do
+                    seu visual. Utilizamos técnicas tradicionais e modernas, sempre atualizadas com as últimas
+                    tendências de corte e estilo, garantindo que você saia daqui satisfeito e confiante.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Além dos serviços de corte de cabelo e barba, oferecemos um atendimento personalizado, com produtos
+                    de alta qualidade, selecionados especialmente para atender às necessidades de cada cliente. Nossa
+                    missão é proporcionar uma experiência única, combinando técnica, cuidado e atenção em cada
+                    atendimento.
+                    <br>
+                    <span style="margin-right: 25px;"></span>Venha conhecer a BarberShop e descubra como é ser atendido por quem entende de estilo e valorização
+                    do visual masculino. Estamos esperando por você!
+                </p>
+            </div>
+            <div class="img-class">
+            <img class="img-i" src="{% static 'imgs/barber.png' %}" alt="" srcset="">
+       </div>
+            
+        </div>
+
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Agendamento</title>
+    <link rel="stylesheet" href="{% static 'corte/agendamento/css/style.css' %}">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'corte/icons/home.svg' %}" alt="" srcset="">
+                Inicio
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                Feedback
+            </a>
+        </div>
+        
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'agendar' %}">
+                <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
+                Agendamento
+            </a>
+        </div>     
+        {% if user.is_staff %}
+            <div>
+                <a href="{% url 'agendageral' %}">
+                    <img src="{% static 'corte/icons/listAdmin.svg' %}" alt="" srcset="">
+                    Agenda Geral
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}">
+                    <img src="{% static 'corte/icons/admin.svg' %}" alt="" srcset="">
+                    Admin
+                </a>
+            </div>
+        {% endif %}
+        <div>
+            <a href="{% url 'sair' %}">
+                <img src="{% static 'corte/icons/logout.svg' %}" alt="" srcset="">
+                Logout
+            </a>
+        </div>
+        {%endif%}
+
+        {% if not user.is_authenticated %}
+            <div>
+                <a href="{% url 'cadastrar' %}">
+                    <img src="{% static 'corte/icons/userRegistration.svg' %}" alt="" srcset="">
+                    Cadastro
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logar' %}">
+                    <img src="{% static 'corte/icons/login.svg' %}" alt="" srcset="">
+                    Login
+                </a>
+            </div>
+        {% endif %}
+    </nav>
+
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+
+    <main>
+        <div>
+            <div id="item1">
+                <h1>Agendar</h1>
+                <form method="post">
+                    {% csrf_token %}
+                    <div>
+                        <label for="horario">Horário:</label>
+                        <select name="horario" id="horario">
+                            {% for h in horarios %}
+                            <option value="{{ h.id }}">{{ h.horario }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="data">Data:</label>
+                        <input type="date" name="data" id="data" required>
+                    </div>
+
+                    <div>
+                        <label for="modelo_corte">Modelo de Corte:</label>
+                        <textarea name="modelo_corte" id="modelo_corte" placeholder="Tipo de corte" required></textarea>
+                    </div>
+
+                    <div>
+                        <button type="submit" class="btn">Agendar</button>
+                    </div>
+                </form>
+
+                <br>
+                <h1>Minha Agenda</h1>
+                <div class="cortes">
+                    {% for agenda in agendamentos %}
+                    <form class="corte" method="post" action="{% url 'deletar' agenda.id %}">
+                        {% csrf_token %}
+                        <div class="data-e-hora">
+                            <p>Horário: {{ agenda.horario }}</p>
+                            <p>Data: {{ agenda.data }}</p>
+                        </div>
+                        <p>Modelo de Corte: {{ agenda.modelo_corte }}</p>
+                        <div>
+                            <button type="submit" class="btn">Cancelar</button>
+                        </div>
+                    </form>
+                    {% empty %}
+                    <p>Você não tem agendamentos.</p>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+            {% if agendamentos_ocupados %}
+            <div id="item2">
+                <h1>Horários e datas ocupados</h1>
+                <table border="1">
+                    <thead>
+                        <tr>
+                            <th>Horário</th>
+                            <th>Data</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for agendamento in agendamentos_ocupados %}
+                        <tr>
+                            <td>{{ agendamento.horario }}</td>
+                            <td>{{ agendamento.data }}</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% endif %}
+        </div>
+    </main>
+
+</body>
+
+</html>

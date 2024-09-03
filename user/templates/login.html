@@ -1,0 +1,25 @@
+{% extends "./base.html" %}
+
+{% block template %}
+<div >
+    <div>
+        <h1>Login</h1>
+    </div>
+    <form action="{% url 'logar' %}" class="" method="post"> {% csrf_token %}
+        <div >
+            <span>Username:</span><br/>
+            <input class="inputpassword" type="text" name="username" placeholder="Insira o username" autocomplete="off">
+        </div>
+        <div>
+            <span>Senha:</span><br/>
+            <input class="inputpassword" type="password" name="password" autocomplete="off">
+        </div>
+        <div class="">
+            <input class="btn" type="submit" value="Entrar">
+        </div>
+        <a href="{% url 'cadastrar' %}">Não tenho conta</a>
+    </form>
+</div>
+
+
+{% endblock %}

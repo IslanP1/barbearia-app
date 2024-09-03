@@ -1,0 +1,147 @@
+* {
+  padding: 0px;
+  margin: 0px;
+  box-sizing: 0px;
+  font-family: sans-serif;
+  color: white
+}
+
+body {
+  background: #101012;
+}
+
+.navbar {
+  background: #181820;
+  padding: 16px;
+  display: flex;
+  gap: 20px;
+}
+
+.navbar a {
+  color: white;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.navbar>div::after {
+  transition: 0.3s 0s;
+  content: "";
+  display: block;
+  width: 20px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: lightgray;
+  margin-top: 2px;
+}
+
+.navbar>div:hover::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 4px;
+  
+  background-color: #eb5b00;
+}
+
+.container{
+  padding: 16px;
+}
+
+.content {
+  padding: 16px;
+  background: #181820;
+  display: flex;
+  gap: 16px;
+  border-radius: 8px;
+}
+
+.content  h1 {
+  color: #eb5b00;
+  margin-bottom: 16px;
+}
+
+.content > div {
+  max-width: 50%;
+}
+ 
+.img {
+  justify-content: center;
+  width: 40%;
+  min-height: 100px;
+  
+}
+/* Classe da imagem da home, qualquer coisa só tirar a div da home e volta ao normal */
+.img-class {
+  width: 100%;
+  display: flex;
+  
+  justify-content: center;
+}
+
+
+
+/* estilo do messages */
+
+.messages {
+  list-style-type: none;
+  padding: 0;
+}
+.messages li {
+  margin-bottom: 10px;
+  padding: 10px;
+  border-radius: 5px;
+}
+.messages .success {
+  background-color: #dff0d8;
+  color: #3c763d;
+}
+.messages .error {
+  background-color: #f2dede;
+  color: #a94442;
+}
+.messages .warning {
+  background-color: #fcf8e3;
+  color: #8a6d3b;
+}
+.messages .info {
+  background-color: #d9edf7;
+  color: #31708f;
+}
+
+/* Função para concertar a imagem */
+@media (max-width: 920px) {
+  .content {
+    flex-direction: column;
+  }
+  .content > div {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+}
+/**/
+@media (max-width: 650px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .content > div {
+    max-width: 100%;
+    width: 100%;
+  }
+  .img{
+    width: 300px;
+    height: 300px;
+  }
+  .img-i {
+    width: 300px;
+    height: 300px;
+  }
+
+}

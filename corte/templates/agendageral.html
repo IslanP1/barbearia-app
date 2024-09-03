@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'corte/agendamentoGeral/css/style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div>
+            <a href="{% url 'home' %}">
+                <img src="{% static 'corte/icons/home.svg' %}" alt="" srcset="">
+                Inicio
+            </a>
+        </div>
+        <div>
+            <a href="{% url 'feedback' %}">
+                <img src="{% static 'corte/icons/feedback-icon.svg' %}" alt="" srcset="">
+                feedback
+            </a>
+        </div>
+        {% if user.is_authenticated %}
+        <div>
+            <a href="{% url 'agendar' %}">
+                <img src="{% static 'corte/icons/listClient.svg' %}" alt="" srcset="">
+                Agendamento
+            </a>
+        </div>
+        
+        {% if user.is_staff %}
+            <div>
+                <a href="{% url 'agendageral' %}">
+                    <img src="{% static 'corte/icons/listAdmin.svg' %}" alt="" srcset="">
+                    Agenda Geral
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'admin:index' %}">
+                    <img src="{% static 'corte/icons/admin.svg' %}" alt="" srcset="">
+                    Admin
+                </a>
+            </div>
+        {% endif %}
+        <div>
+            <a href="{% url 'sair' %}">
+                <img src="{% static 'corte/icons/logout.svg' %}" alt="" srcset="">
+                Logout
+            </a>
+        </div>
+        {%endif%}
+
+        {% if not user.is_authenticated %}
+            <div>
+                <a href="{% url 'cadastrar' %}">
+                    <img src="{% static 'corte/icons/userRegistration.svg' %}" alt="" srcset="">
+                    Cadastro
+                </a>
+            </div>
+            <div>
+                <a href="{% url 'logar' %}">
+                    <img src="{% static 'corte/icons/login.svg' %}" alt="" srcset="">
+                    Login
+                </a>
+            </div>
+        {% endif %}
+    </nav>
+    <main>
+        <div>
+            <h1>Agendamento geral</h1>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Usuário</th>
+                        <th>Horário</th>
+                        <th>Data</th>
+                        <th>Data</th>
+                        <th>Modelo de Corte</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for agendamento in agendamentos %}
+                    <tr>
+                        <td>{{ agendamento.user }}</td>
+                        <td>{{ agendamento.horario }}</td>
+                        <td>{{ agendamento.data }}</td>
+                        <td>
+                            {{ agendamento.horario }} -
+                            <br>
+                            {{ agendamento.data }}
+                        </td>
+                        <td>{{ agendamento.modelo_corte }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </main>
+</body>
+</html>
