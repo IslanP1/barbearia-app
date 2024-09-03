@@ -63,14 +63,13 @@ def agendar(request):
 @login_required
 def deletar(request, id):
     try:
-        agendamento = Agendamento.objects.filter(user=request.user).get(id=id)
-    except Agendamento.DoesNotExist:
-        messages.error(request, 'Tentando apagar corte dos outro espertinho')
-        return redirect('/')
-    if request.method == 'POST':
+        agendamento = Agendamento.objects.get(id=id, user=request.user)
         agendamento.delete()
-        messages.success(request, 'Agendamento cancelado com sucesso')
-        return redirect('/agendar/')
+        messages.success(request, 'Agendamento cancelado com sucesso!')
+    except Agendamento.DoesNotExist:
+        messages.error(request, 'Tentando apagar agendamento que não pertence a você.')
+        return redirect('/')
+    return redirect('/')
     
 def agendageral(request):
     if request.method == "GET":
